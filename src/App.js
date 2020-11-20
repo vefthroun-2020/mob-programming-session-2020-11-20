@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react"
 
 function App() {
   const url = "https://api.spotify.com/v1/me/top/artists"
-  const bearer = "Bearer " + "BQCgIsMQhLvctvOg8nI5qzSa4WqTBEfst4SrEMTfN-s9rhPyU2a_aWaMg7kXWnjUZhGtaJAnGFnryOrDosWkhAQCXYWed453fth2jQS2bpFGDS3tcEKrJdesMq0_f6J2HTB8mtlsdxDPeRnMKep_4Q"
+  const bearer = "Bearer " + "BQD2iqKQ50dz7OpZC8Z7rHaD2X47yKY_le82y3G2wAgfSGDsJVHqebOeXybYB354KvuKynYkedmHLn1SRHYY1F9DNT9IRQcW0i-S_lHkk6E2pI6vl3Sw7_xOkso3kHrfBsIMXF7wOXqYu-vbREdVSg"
 
 
   const [display, setDisplay] = useState([])
@@ -15,12 +15,18 @@ function App() {
     }})
     const data = await response.json()
     console.log(data)
-
+    setDisplay(data.items)
   }, [])
-  return (
-    <div>
 
-    </div>
+
+  return (
+    <>
+      <div>
+         { display.map(i => {
+            return <li>{i.name}</li>
+        })}
+      </div>
+    </>
   );
 }
 
